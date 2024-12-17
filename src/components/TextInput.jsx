@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Box, TextField, IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import LanguageIcon from "@mui/icons-material/Language";
 
 const TextInput = ({ onSendMessage }) => {
   const [inputValue, setInputValue] = useState("");
