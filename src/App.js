@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SideBar from "./components/SideBar";
 import TextInput from "./components/TextInput";
 import ChatArea from "./components/ChatArea";
@@ -18,7 +18,7 @@ const App = () => {
   //サーバーからプロジェクト一覧を取得
   const fetchProjects = async () => {
     try {
-      const response = await fetch("http://localhost:7071/projects");
+      const response = await fetch("https://func-rag.azurewebsites.net/projects");
       const data = await response.json();
       // サーバーから取得したプロジェクトを安全に設定
       setProjects(
@@ -33,7 +33,7 @@ const App = () => {
   const handleRegisterProject = async (projectName, spoUrl) => {
     setIsRegistering(true); // 登録中の状態を開始
     try {
-      const response = await fetch("http://localhost:7071/resist_project", {
+      const response = await fetch("https://func-rag.azurewebsites.net/resist_project", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ project_name: projectName, spo_url: spoUrl }),
@@ -66,7 +66,7 @@ const App = () => {
     setMessages((prevMessages) => [...prevMessages, questionMessage]);
 
     try {
-      const response = await fetch("http://localhost:7071/answer", {
+      const response = await fetch("https://func-rag.azurewebsites.net/answer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_question: text, project_name: selectedProject }),
